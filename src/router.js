@@ -4,7 +4,7 @@ import Login from "./pages/login";
 const routers = [
     {   
         key: "homepage",
-        path: '/homepage',
+        path: '/',
         component: Homepage,
         auth: true,
         exact: true,

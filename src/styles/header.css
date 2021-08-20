@@ -1,0 +1,12 @@
+.main-header {
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+
+.branch-name {
+    font-size: 20px;
+    word-spacing: .1rem;
+    letter-spacing: .1rem;
+    font-weight: 600;
+}
