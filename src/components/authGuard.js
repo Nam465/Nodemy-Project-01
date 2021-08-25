@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useHistory } from "react-router-dom";
+import AuthenticateContext from '../context/authenticate';
 
 function AuthGuard(props) {
 
+    const [authenticate] = useContext(AuthenticateContext)
     const history = useHistory()
 
-    React.useEffect(() => {
-        // Kiểm tra user trong localStorage
-        const user = localStorage.getItem('user')
-        // Nếu User không tồn tại redireact sang login page
-        if (!user) {
-            history.push('/login')
-        }
-    })
+    if (!authenticate) {
+        history.push('/login')
+    }
 
     return <div>
         {props.children}

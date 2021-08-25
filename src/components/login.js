@@ -1,11 +1,13 @@
-import React from "react"
+import React, {useContext} from "react"
 import { authWithUsername } from "../repositories/user"
 import { Input, Button } from "@material-ui/core"
 import { login, register } from "../repositories/user"
 import {useHistory, useLocation, useParams} from "react-router-dom"
+import AuthenticateContext from "../context/authenticate"
 
 function Login(props) {
 
+    const [authenticate, setAuthenticate] = useContext(AuthenticateContext)
     const history = useHistory()
     const location = useLocation()
     const params = useParams()
@@ -25,6 +27,8 @@ function Login(props) {
             // Save data to localstorage
             const converted = JSON.stringify(user)
             localStorage.setItem("user", converted)
+            // Cập nhật lại useContext
+            setAuthenticate(user)
             // Redirect to homepage
             history.push('/')
         } catch (error) {

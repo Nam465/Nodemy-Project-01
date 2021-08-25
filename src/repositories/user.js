@@ -15,7 +15,8 @@ export async function login(email, password) {
         response.data.user.FullName,
         response.data.user.Email,
         response.data.user.CreatedAt,
-        response.data.jwt
+        response.data.jwt,
+        response.data.user.Avatar
     )
     return user
 }

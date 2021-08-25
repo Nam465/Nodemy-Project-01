@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CustomHeader from '../components/header'
 import CustomFooter from '../components/footer'
-import ShortLink from '../components/short-link'
-import AuthGuard from '../components/authGuard'
+import AuthenticateContext from '../context/authenticate'
 
 function Homepage() {
+
+    const authenticate = useContext(AuthenticateContext)
+
+    React.useEffect(() => {
+        console.log(1, authenticate)
+    })
+
     return <div>
         <CustomHeader />
 
         <div className="homepage-main">
             
-            <ShortLink />
         </div>
 
         <CustomFooter />
