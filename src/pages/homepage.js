@@ -7,10 +7,6 @@ function Homepage() {
 
     const authenticate = useContext(AuthenticateContext)
 
-    React.useEffect(() => {
-        console.log(1, authenticate)
-    })
-
     return <div>
         <CustomHeader />
 
