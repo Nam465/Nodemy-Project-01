@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Glory&display=swap');
+
+html,
+body {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    font-family: 'Glory', sans-serif;
+}
+
 .short-link {
     padding: 20px;
     color: black;
@@ -7,5 +17,147 @@
 }
 
 .short-link:hover {
-    color:brown;
+    color: brown;
+}
+
+/* Login  */
+.login {
+    background-image: url('https://i.imgur.com/M5dOjhx.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-inner {
+    max-width: 400px;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+}
+
+.input {
+    margin: 16px 0;
+    font-size: 18px;
+}
+
+.link {
+    font-size: 14px;
+    color: rgb(70, 70, 230);
+    cursor: pointer;
+}
+
+/* Header  */
+.main-header {
+    height: 80px;
+    background-color: cornflowerblue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-button {
+    color: white;
+    background-color: rgb(212, 212, 11);
+    font-size: 20px;
+    border: none;
+    padding: 8px;
+    margin-right: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Menu  */
+.menu-right {
+    padding: 16px;
+    width: 400px;
+}
+
+.menu-orgin-link {
+    font-size: 16px;
+    color: red;
+    text-decoration: none;
+}
+
+.menu-short-link {
+    font-size: 20px;
+    color: blue;
+    text-decoration: none;
+}
+
+.menu-create-time {
+    font-size: 14px;
+}
+
+.menu-button {
+    font-size: 16px;
+    margin-right: 16px;
+}
+
+/* Form  */
+.form-short-link {
+    width: 400px;
+    padding: 36px 16px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 24px;
+    font-weight: bold;
+}
+
+.form-input {
+    margin-bottom: 24px;
+}
+
+.MuiTextField-root {
+    background-color: white;
+}
+
+.MuiButton-root {
+    width: 100%;
+    color: #fff !important;
+    background-color: #28c98b !important;
+    border-color: #28c98b !important;
+    font-weight: bold !important;
+}
+
+/* Home page  */
+.homepage {
+    background-color: #10bde5;
+    min-height: 100vh;
+}
+
+.homepage-main {
+    padding-top: 60px;
+    padding-left: 60px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer {
+    font-size: 16px;
+    text-align: center;
+    background-color: #002a61;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

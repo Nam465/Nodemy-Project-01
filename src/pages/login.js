@@ -1,5 +1,5 @@
 import React from "react"
-import Login from '../components/login'
+import Login from "../components/login"
 import Register from "../components/register"
 
 function LoginScreen() {
@@ -13,10 +13,23 @@ function LoginScreen() {
         setShow(false)
     }
 
+    const handleBack = () => {
+        setShow(false)
+    }
+
     return (
-        <div>
-            { isShowRegister == false && <Login onCreateAccount={showRegister} />}
-            { isShowRegister == true && <Register onSuccessCreate={handleCreateSuccess} />}
+        <div className="login">
+            <div className="login-inner">
+                {isShowRegister == false && (
+                    <Login onCreateAccount={showRegister} />
+                )}
+                {isShowRegister == true && (
+                    <Register
+                        onSuccessCreate={handleCreateSuccess}
+                        back={handleBack}
+                    />
+                )}
+            </div>
         </div>
     )
 }

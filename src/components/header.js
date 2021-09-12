@@ -5,7 +5,6 @@ import { Button, Avatar } from "@material-ui/core"
 import AuthenticateContext from "../context/authenticate"
 
 function CustomHeader() {
-
     const [authenticate, setAuthenticate] = useContext(AuthenticateContext)
     const [openMenu, setOpenMenu] = React.useState(false)
 
@@ -25,12 +24,16 @@ function CustomHeader() {
 
     return (
         <div className="main-header">
-            <Avatar src={authenticate.avatar} />
-            <div>{authenticate.fullname}</div>
-            <Button onClick={handleLogout}>Đăng xuất</Button>
             <div className="branch-name">Tiny Url</div>
-            <button onClick={handleOpen}>OpenMenu</button>
-            <MenuRight openMenu={openMenu} handleClose={handleClose} />
+
+            <div className="header-right">
+                <button className="header-button" onClick={handleOpen}>OpenMenu</button>
+                <button className="header-button" onClick={handleLogout}>Đăng xuất</button>
+
+                <Avatar src={authenticate.avatar} className="avatar" />
+                <div>{authenticate.fullname}</div>
+                <MenuRight openMenu={openMenu} handleClose={handleClose} />
+            </div>
         </div>
     )
 }

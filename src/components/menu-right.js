@@ -5,10 +5,9 @@ import { getAllShortLink } from "../repositories/short-link"
 import AuthenticateContext from "../context/authenticate"
 import { Link, useHistory } from "react-router-dom"
 import moment from "moment"
-import PlaceHolder from './placeholder'
+import PlaceHolder from "./placeholder"
 
 function ShortLinkList(props) {
-
     const history = useHistory()
     const authenticate = useContext(AuthenticateContext)
     const [data, setData] = useState([])
@@ -40,28 +39,38 @@ function ShortLinkList(props) {
     }
 
     if (loading == true) return <PlaceHolder />
-    
+
     return (
         <div>
             {data.map((item) => {
                 return (
                     <div class="short-link" key={item._id}>
-                        <Link to={"/short-link/" + item._id}>
-                            <div>
-                                <div>{item.originUrl}</div>
-                                <div>{item.shorLink}</div>
-                                <div>{ moment(item.createdAt).format('L LT') }</div>
+                        <div>
+                            <div className="menu-orgin-link">
+                                {item.originUrl}
                             </div>
-                        </Link>
+                            <div className="menu-short-link">
+                                {item.shorLink}
+                            </div>
+                            <div className="menu-create-time">
+                                {moment(item.createdAt).format("L LT")}
+                            </div>
+                        </div>
                         <div class="short-link__buttons">
                             <Button
+                                variant="contained"
+                                size="small"
                                 onClick={() => {
                                     openShortLinkInNewTab(item.shorLink)
                                 }}
                             >
                                 Mở short link
                             </Button>
+                            <span> </span>
                             <Button
+                                variant="contained"
+                                color="primary"
+                                size="small"
                                 onClick={() => {
                                     copy(item.shorLink)
                                 }}
@@ -83,8 +92,10 @@ function MenuRight(props) {
             open={props.openMenu}
             onClose={() => props.handleClose()}
         >
-            <div>Danh sách link rút gọn</div>
-            <ShortLinkList />
+            <div className="menu-right">
+                <h2>Danh sách link rút gọn</h2>
+                <ShortLinkList />
+            </div>
         </Drawer>
     )
 }

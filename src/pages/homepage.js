@@ -8,7 +8,7 @@ function Homepage() {
 
     const authenticate = useContext(AuthenticateContext)
 
-    return <div>
+    return <div className="homepage">
         <CustomHeader />
 
         <div className="homepage-main">

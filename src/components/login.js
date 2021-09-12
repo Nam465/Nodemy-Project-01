@@ -45,6 +45,7 @@ function Login(props) {
                 inputProps={{ "aria-label": "description" }}
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                className="input"
             />
             <Input
                 fullWidth={true}
@@ -52,9 +53,11 @@ function Login(props) {
                 inputProps={{ "aria-label": "description" }}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                className="input"
+
             />
-            <Button onClick={handLogin}>Login</Button>
-            <p onClick={props.onCreateAccount}>Create a new account</p>
+            <Button onClick={handLogin} variant="outlined" color="primary">Login</Button>
+            <p onClick={props.onCreateAccount} className="link">Create a new account</p>
         </form>
     )
 }

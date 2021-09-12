@@ -1,8 +1,8 @@
 import React from 'react'
 
 function CustomFooter() {
-    return <div>
-        CustomFooter
+    return <div className="footer">
+        Short link 12/09/2021
     </div>
 }
 

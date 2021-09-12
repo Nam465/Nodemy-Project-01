@@ -33,6 +33,10 @@ function Register(props) {
         }
     }
 
+    const back = () => {
+        props.back()
+    }
+
     return (
         <form>
             <Input
@@ -41,6 +45,7 @@ function Register(props) {
                 inputProps={{ "aria-label": "description" }}
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                className="input"
             />
             <Input
                 fullWidth={true}
@@ -48,6 +53,7 @@ function Register(props) {
                 inputProps={{ "aria-label": "description" }}
                 value={fullname}
                 onChange={(event) => setFullname(event.target.value)}
+                className="input"
             />
             <Input
                 fullWidth={true}
@@ -55,6 +61,7 @@ function Register(props) {
                 inputProps={{ "aria-label": "description" }}
                 value={avatar}
                 onChange={(event) => setAvatar(event.target.value)}
+                className="input"
             />
             <Input
                 fullWidth={true}
@@ -62,6 +69,7 @@ function Register(props) {
                 inputProps={{ "aria-label": "description" }}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                className="input"
             />
             <Input
                 fullWidth={true}
@@ -69,8 +77,12 @@ function Register(props) {
                 inputProps={{ "aria-label": "description" }}
                 value={password2}
                 onChange={(event) => setPassword2(event.target.value)}
+                className="input"
             />
-            <Button onClick={handleRegister}>Register</Button>
+            <Button onClick={handleRegister} variant="outlined" color="primary">
+                Register
+            </Button>
+            <Button onClick={back}>Back</Button>
         </form>
     )
 }
