@@ -5,11 +5,14 @@ import { getAllShortLink } from "../repositories/short-link"
 import AuthenticateContext from "../context/authenticate"
 import { Link, useHistory } from "react-router-dom"
 import moment from "moment"
+import PlaceHolder from './placeholder'
 
-function MenuRight(props) {
+function ShortLinkList(props) {
+
     const history = useHistory()
     const authenticate = useContext(AuthenticateContext)
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         loadData()
@@ -18,6 +21,7 @@ function MenuRight(props) {
     const loadData = async () => {
         const allLinks = await getAllShortLink(authenticate[0].token)
         setData(allLinks)
+        setLoading(false)
     }
 
     const copy = (shortLink) => {
@@ -32,16 +36,13 @@ function MenuRight(props) {
     }
 
     const openShortLinkInNewTab = (shortLink) => {
-      window.open(shortLink, '_blank').focus()
+        window.open(shortLink, "_blank").focus()
     }
 
+    if (loading == true) return <PlaceHolder />
+    
     return (
-        <Drawer
-            anchor={"right"}
-            open={props.openMenu}
-            onClose={() => props.handleClose()}
-        >
-            <div>Danh sách link rút gọn</div>
+        <div>
             {data.map((item) => {
                 return (
                     <div class="short-link" key={item._id}>
@@ -49,13 +50,17 @@ function MenuRight(props) {
                             <div>
                                 <div>{item.originUrl}</div>
                                 <div>{item.shorLink}</div>
-                                <div>{item.createdAt}</div>
+                                <div>{ moment(item.createdAt).format('L LT') }</div>
                             </div>
                         </Link>
                         <div class="short-link__buttons">
-                            <Button onClick={() => {
-                              openShortLinkInNewTab(item.shorLink)
-                            }}>Mở short link</Button>
+                            <Button
+                                onClick={() => {
+                                    openShortLinkInNewTab(item.shorLink)
+                                }}
+                            >
+                                Mở short link
+                            </Button>
                             <Button
                                 onClick={() => {
                                     copy(item.shorLink)
@@ -67,6 +72,19 @@ function MenuRight(props) {
                     </div>
                 )
             })}
+        </div>
+    )
+}
+
+function MenuRight(props) {
+    return (
+        <Drawer
+            anchor={"right"}
+            open={props.openMenu}
+            onClose={() => props.handleClose()}
+        >
+            <div>Danh sách link rút gọn</div>
+            <ShortLinkList />
         </Drawer>
     )
 }
